@@ -1,0 +1,13 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Dotenv environment variable files
+.env
+
+# macOS specific
+.DS_Store
