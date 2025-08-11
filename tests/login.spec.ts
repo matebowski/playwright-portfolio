@@ -4,13 +4,11 @@ import { SignUpLoginPage } from "../pages/SignUpLoginPage";
 import { generateUniqueUser } from "../helpers/user-generator";
 import { defaultRegistrationData } from "../test-data/user-data";
 import { NavigationBarPage } from "../pages/NavigationBarPage";
+import { acceptCookiesIfPresent } from "../helpers/cookies";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/login");
-  const consentButton = page.getByRole("button", { name: "Consent" });
-  if (await consentButton.isVisible()) {
-    await consentButton.click();
-  }
+  await acceptCookiesIfPresent(page);
 });
 
 test("Login verification", async ({ page }) => {

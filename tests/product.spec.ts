@@ -1,13 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { ProductsPage } from "../pages/ProductsPage";
+import { acceptCookiesIfPresent } from "../helpers/cookies";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/products");
-
-  const consentButton = page.getByRole("button", { name: "Consent" });
-  if (await consentButton.isVisible()) {
-    await consentButton.click();
-  }
+  await acceptCookiesIfPresent(page);
 });
 
 test("Should find a product by searching", async ({ page }) => {
@@ -18,7 +15,5 @@ test("Should find a product by searching", async ({ page }) => {
 
   await expect(productsPage.searchedProductsHeader).toBeVisible();
 
-  const productContainer = productsPage.getProductContainerByName(productName);
-
-  await expect(productContainer).toBeVisible();
+  await productsPage.expectProductVisible(productName);
 });

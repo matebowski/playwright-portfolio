@@ -3,13 +3,12 @@ import { generateUniqueUser } from "../helpers/user-generator";
 import { AccountInformationPage } from "../pages/AccountInformationPage";
 import { SignUpLoginPage } from "../pages/SignUpLoginPage";
 import { defaultRegistrationData } from "../test-data/user-data";
+import { acceptCookiesIfPresent } from "@helpers/cookies";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/login");
-  const consentButton = page.getByRole("button", { name: "Consent" });
-  if (await consentButton.isVisible()) {
-    await consentButton.click();
-  }
+  await page.goto("/login");
+  await acceptCookiesIfPresent(page);
 });
 
 test("Create user", async ({ page }) => {
