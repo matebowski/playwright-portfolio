@@ -1,11 +1,9 @@
+import { acceptCookiesIfPresent } from "../helpers/cookies";
 import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/");
-  const consentButton = page.getByRole("button", { name: "Consent" });
-  if (await consentButton.isVisible()) {
-    await consentButton.click();
-  }
+  await page.goto("/login");
+  await acceptCookiesIfPresent(page);
 });
 
 test("Verify Home Page title", async ({ page }) => {
