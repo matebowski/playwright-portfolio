@@ -1,4 +1,4 @@
-import { type Page, type Locator } from "@playwright/test";
+import { type Page, type Locator, expect } from "@playwright/test";
 
 export class ProductsPage {
   readonly page: Page;
@@ -26,5 +26,9 @@ export class ProductsPage {
     return this.allProductsContainer.locator(".product-image-wrapper", {
       hasText: productName,
     });
+  }
+
+  async expectProductVisible(productName: string) {
+    await expect(this.getProductContainerByName(productName)).toBeVisible();
   }
 }
