@@ -2,7 +2,7 @@ import { acceptCookiesIfPresent } from "../helpers/cookies";
 import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/login");
+  await page.goto("/");
   await acceptCookiesIfPresent(page);
 });
 
