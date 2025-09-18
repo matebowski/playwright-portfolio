@@ -1,35 +1,55 @@
-# Playwright + TypeScript Portfolio
+# E2E Test Portfolio (Playwright + TypeScript) 🚀
 
-E2E suite demonstrating Playwright best practices (POM, multi-browser, strict TS, lint/format, debugging).
+This repository contains a robust End-to-End test suite for the [Automation Exercise](https://automationexercise.com/) website, built to showcase best practices in test automation.
 
-## Requirements
+---
 
-- Node 18+, npm 9+
-- Playwright browsers: `npx playwright install --with-deps`
+## ✨ Key Features
 
-## Quick start
+* **Page Object Model (POM):** Clean separation of page logic from test specs for high maintainability.
+* **Data Separation:** Test data and helper functions are isolated from the test logic.
+* **Environment-Ready:** Uses `.env` files to manage credentials and configuration.
+* **Cross-Browser Testing:** Pre-configured to run tests against Chromium, Firefox, and WebKit.
 
+---
+
+## 🛠️ Tech Stack
+
+* **Framework:** [Playwright](https'://playwright.dev/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/) (strict mode)
+* **Code Quality:** [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
+* **Environment:** [Node.js](https://nodejs.org/) (18+) & [NPM](https://www.npmjs.com/)
+
+---
+
+## 🚀 Getting Started
+
+**1. Clone the repository:**
 ```bash
+git clone [https://github.com/matebowski/playwright-portfolio.git](https://github.com/matebowski/playwright-portfolio.git)
+cd playwright-portfolio
+```
+
+**2. Install dependencies:**
+```bash
+# Use Clean Install to match the lockfile versions
 npm ci
+```
+
+**3. Install Playwright browsers:**
+```bash
+npx playwright install --with-deps
+```
+
+**4. Configure environment variables:**
+Create a `.env` file by copying `.env.example` and fill in your credentials.
+```
+E2E_EMAIL=your_email@example.com
+E2E_PASSWORD=your_password
+BASE_URL=[https://automationexercise.com](https://automationexercise.com)
+```
+
+**5. Run the tests!**
+```bash
 npm test
-```
-
-## Useful scripts
-
-- `npm test` – run all tests (Chromium/Firefox/WebKit)
-- `npm run test:ui` – Playwright UI mode
-- `npm run test:debug` – inspector (`PWDEBUG=1`)
-- `npm run typecheck` – TypeScript strict check
-- `npm run lint` / `npm run format` – ESLint (flat v9) + Prettier
-
-## Project structure
-
-```
-pages/                # Page Objects
-tests/                # Specs
-helpers/              # Test utilities
-test-data/            # Fixtures/data
-playwright.config.ts  # Projects, timeouts, baseURL, reporters
-eslint.config.mjs     # ESLint v9 flat config (TS + Playwright)
-tsconfig.json         # TypeScript (strict)
 ```
